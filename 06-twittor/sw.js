@@ -28,19 +28,11 @@ const APP_SHELL_IMMUTABLE = [
 self.addEventListener("install", (e) => {
   const cacheStatic = caches
     .open(STATIC_CACHE)
-    .then((cache) => {
-      console.log("APP_SHELL cache", cache);
-      return cache.addAll(APP_SHELL);
-    })
-    .catch((err) => console.log("STATIC_CACHE error", err));
+    .then((cache) => cache.addAll(APP_SHELL));
 
   const cacheImmutable = caches
     .open(IMMUTABLE_CACHE)
-    .then((cache) => {
-      console.log("APP_SHELL_IMMUTABLE cache", cache);
-      return cache.addAll(APP_SHELL_IMMUTABLE);
-    })
-    .catch((err) => console.log("IMMUTABLE_CACHE error", err));
+    .then((cache) => cache.addAll(APP_SHELL_IMMUTABLE));
 
   e.waitUntil(Promise.all([cacheStatic, cacheImmutable]));
 });
