@@ -1,5 +1,5 @@
 const url = window.location.href;
-let swLocation = "/twittor/sw.js";
+let swLocation = "/pwa-udemy/06-twittor/sw.js";
 
 if (navigator.serviceWorker) {
   if (url.includes("localhost")) {
