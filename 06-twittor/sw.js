@@ -6,15 +6,15 @@ const IMMUTABLE_CACHE = "immutable-v1";
 
 const APP_SHELL = [
   // "/",
-  "/index.html",
-  "/css/style.css",
-  "/img/favicon.ico",
-  "/img/avatars/hulk.jpg",
-  "/img/avatars/ironman.jpg",
+  "/pwa-udemy/06-twittor/index.html",
+  "/pwa-udemy/06-twittor/css/style.css",
+  "/pwa-udemy/06-twittor/img/favicon.ico",
+  "/pwa-udemy/06-twittor/img/avatars/hulk.jpg",
+  "/pwa-udemy/06-twittor/img/avatars/ironman.jpg",
   "/img/avatars/spiderman.jpg",
-  "/img/avatars/thor.jpg",
-  "/img/avatars/wolverine.jpg",
-  "/js/app.js",
+  "/pwa-udemy/06-twittor/img/avatars/thor.jpg",
+  "/pwa-udemy/06-twittor/img/avatars/wolverine.jpg",
+  "/pwa-udemy/06-twittor/js/app.js",
 ];
 
 const APP_SHELL_IMMUTABLE = [
