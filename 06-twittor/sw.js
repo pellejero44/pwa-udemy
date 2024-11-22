@@ -11,7 +11,7 @@ const APP_SHELL = [
   "/pwa-udemy/06-twittor/img/favicon.ico",
   "/pwa-udemy/06-twittor/img/avatars/hulk.jpg",
   "/pwa-udemy/06-twittor/img/avatars/ironman.jpg",
-  "/img/avatars/spiderman.jpg",
+  "/pwa-udemy/06-twittor/img/avatars/spiderman.jpg",
   "/pwa-udemy/06-twittor/img/avatars/thor.jpg",
   "/pwa-udemy/06-twittor/img/avatars/wolverine.jpg",
   "/pwa-udemy/06-twittor/js/app.js",
