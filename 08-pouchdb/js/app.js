@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.register("/sw.js");
+  }
+
   var ENTER_KEY = 13;
   var newTodoDom = document.getElementById("new-todo");
   var syncDom = document.getElementById("sync-wrapper");
@@ -10,8 +14,15 @@
   var db = new PouchDB("todos");
   var remoteCouch = false;
 
+  db.changes({
+    since: "now",
+    live: true,
+  }).on("change", showTodos);
+
   // We have to create a new todo document and enter it in the database
   function addTodo(text) {
+    if (text.length < 1) return;
+
     const todo = {
       _id: new Date().toISOString(),
       title: text,
@@ -27,16 +38,40 @@
   }
 
   // Show the current list of todos by reading them from the database
-  function showTodos() {}
+  function showTodos() {
+    db.allDocs({
+      include_docs: true,
+      descending: true,
+    })
+      .then((result) => {
+        redrawTodosUI(result.rows);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  function checkboxChanged(todo, event) {}
+  function checkboxChanged(todo, event) {
+    todo.completed = event.target.checked;
+    db.put(todo);
+  }
 
   // User pressed the delete button for a todo, delete it
-  function deleteButtonPressed(todo) {}
+  function deleteButtonPressed(todo) {
+    db.remove(todo);
+  }
 
   // The input box when editing a todo has blurred, we should save
   // the new title or delete the todo if the title is empty
-  function todoBlurred(todo, event) {}
+  function todoBlurred(todo, event) {
+    const text = event.target.value.trim();
+    if (!text) {
+      db.remove(todo);
+    } else {
+      todo.title = text;
+      db.put(todo);
+    }
+  }
 
   // Initialise a sync with the remote server
   function sync() {}
